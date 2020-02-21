@@ -10,7 +10,7 @@ import Foundation
 
 class MessageThreadController {
     
-    func fetchMessageThreads(completion: @escaping () -> Void) {
+    func fetchMessageThreads(completion: @escaping (Error?) -> Void) {
         
         let requestURL = MessageThreadController.baseURL.appendingPathExtension("json")
         
@@ -24,20 +24,21 @@ class MessageThreadController {
             
             if let error = error {
                 NSLog("Error fetching message threads: \(error)")
-                completion()
+                completion(error)
                 return
             }
             
-            guard let data = data else { NSLog("No data returned from data task"); completion(); return }
+            guard let data = data, data.count > 5 else { NSLog("No data returned from data task"); completion(NSError(domain: "message.board", code: 402, userInfo: nil)); return }
             
             do {
-                self.messageThreads = try JSONDecoder().decode([MessageThread].self, from: data)
+                self.messageThreads = try Array(JSONDecoder().decode([String: MessageThread].self, from: data).values)
             } catch {
                 self.messageThreads = []
                 NSLog("Error decoding message threads from JSON data: \(error)")
+                 completion(error); return
             }
             
-            completion()
+            completion(nil)
         }.resume()
     }
     
@@ -72,7 +73,7 @@ class MessageThreadController {
             self.messageThreads.append(thread)
             completion()
             
-        }
+        }.resume()
     }
     
     func createMessage(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
@@ -111,6 +112,6 @@ class MessageThreadController {
         }.resume()
     }
     
-    static let baseURL = URL(string: "https://lambda-message-board.firebaseio.com/")!
+    static let baseURL = URL(string: "https://testing-f766e.firebaseio.com/")!
     var messageThreads: [MessageThread] = []
 }

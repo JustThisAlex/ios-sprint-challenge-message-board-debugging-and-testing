@@ -63,6 +63,8 @@
 		9D9B6AFC214B7A66006381F7 /* MessageBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9B6B00214B7A66006381F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9B6B06214B7A7B006381F7 /* MessageThreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageThreadTests.swift; sourceTree = "<group>"; };
+		FAD68CEE24004AF40007FED7 /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
+		FAD68CEF24004B0D0007FED7 /* ReleaseNotes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReleaseNotes.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,8 @@
 				46436031211ABC3900E7FF73 /* View Controllers */,
 				4643602E211ABC1100E7FF73 /* Storyboards */,
 				4643602D211ABC0900E7FF73 /* Resources */,
+				FAD68CEE24004AF40007FED7 /* Bugs.md */,
+				FAD68CEF24004B0D0007FED7 /* ReleaseNotes.md */,
 			);
 			path = "Message Board";
 			sourceTree = "<group>";
